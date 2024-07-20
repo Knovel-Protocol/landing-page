@@ -1,0 +1,129 @@
+[
+  {
+    "id": 1,
+    "image_url": "https://i.imgur.com/UN5xE9N.png",
+    "title": "In Your Eyes",
+    "author": "Margarita Perez",
+    "tags": ["Dark", "Mysterious", "Thriller", "Adult"]
+  }, {
+    "id": 2,
+    "image_url": "https://i.imgur.com/nYPINzH.jpeg",
+    "title": "The Black Universe",
+    "author": "Greta Mae Evans",
+    "tags": ["YA", "Fiction", "Fantasy", "Supernatural", "Urban Fantasy"]
+  }, {
+    "id": 3,
+    "image_url": "https://i.imgur.com/6hrwee7.png",
+    "title": "Clouds",
+    "author": "Avery Alonso",
+    "tags": ["Classics", "Fiction", "Romance", "Literature"]
+  },
+  {
+    "id": 4,
+    "image_url": "https://i.imgur.com/w485dV4.png",
+    "title": "The Ultimate Business Library",
+    "author": "Sacha Dubois",
+    "tags": ["Non Fiction", "Psychology", "Self Help", "Philosophy"]
+  }, {
+    "id": 5,
+    "image_url": "https://i.imgur.com/OlRdINa.png",
+    "title": "Fairy Tale The Magic of Transformation",
+    "author": "Margarita Perez",
+    "tags": ["Fantasy", "YA", "Romance", "Fiction", "Supernatural", "Fairies"]
+  }, {
+    "id": 6,
+    "image_url": "https://i.imgur.com/7NWqQ4R.png",
+    "title": "A Guide to Crafting Dried Flower Bouquets",
+    "author": "Olivia Wilson",
+    "tags": ["Classics", "Fiction", "Romance", "Historical", "Literature"]    
+  },
+  {
+    "id": 7,
+    "image_url": "https://i.imgur.com/VkyNCga.png",
+    "title": "Sword",
+    "author": "Olivia Wilson",
+    "tags": ["Fiction", "Fantasy", "Historical Fiction", "Adult"]
+  }, {
+    "id": 8,
+    "image_url": "https://i.imgur.com/CIsJyPz.png",
+    "title": "Mariana",
+    "author": "Bailey Dupont",
+    "tags": ["Romance", "Marriage", "Social Status", "Period"]
+  }, {
+    "id": 9,
+    "image_url": "https://i.imgur.com/GNwdKfj.png",
+    "title": "Silks of Heaven",
+    "author": "Donna Stroup",
+    "tags": ["YA", "Fantasy", "Fiction", "Romance", "Angels", "Supernatural"]
+  },{
+    "id": 10,
+    "image_url": "https://i.imgur.com/5uGiXhH.png",
+    "title": "Think Outside The Box",
+    "author": "Amelia Pond",
+    "tags": ["Self Help", "YA", "Non Fiction", "Psychology"]
+    },{
+    "id": 11,
+    "image_url": "https://i.imgur.com/HloXsH1.jpeg",
+    "title": "Waiting For You",
+    "author": "Olivia Wilson",
+    "tags": ["Romance", "YA", "Fiction", "Romance", "Wealth"]
+  },{
+    "id": 12,
+    "image_url": "https://i.imgur.com/FJDqGRQ.png",
+    "title": "Abandoned Kingdom",
+    "author": "Claudia Wilson",
+    "tags": ["Classics", "Adventure", "Fantasy", "Historical Fiction"]
+  },
+  {
+    "id": 13,
+    "image_url": "https://i.imgur.com/PD0wvEc_d.webp?maxwidth=760&fidelity=grand",
+    "title": "The Flawless Beauty",
+    "author": "Neil Tran",
+    "tags":["Fantasy", "YA", "Fiction", "Romance", "Paranormal"]
+  },{
+    "id": 14,
+    "image_url": "https://i.imgur.com/jXbuGvq.jpeg",
+    "title": "Princess",
+    "author": "Bryan Neuman",
+    "tags": ["Classics", "Historical Fiction", "Social Status", "Literature"]
+  },
+  {
+    "id": 15,
+    "image_url": "https://i.imgur.com/WPcIvjM.png",
+    "title": "Rated Mania",
+    "author": "Bailey Dupont", 
+    "tags": ["Adult", "Horror", "Mystery", "Fiction", "Paranormal", "Supernatural"]
+  },{
+    "id": 16,
+    "image_url": "https://i.imgur.com/KJBLcgU.png",
+    "title": "Spear",
+    "author": "Neil Tran",
+    "tags": ["Fiction", "Mystery", "Thriller", "Contemporary", "YA"]
+  },
+  {
+    "id": 17,
+    "image_url": "https://i.imgur.com/IqI4tAl.png",
+    "title": "The Behind Lost",
+    "author": "Isaac Wright",
+    "tags": ["YA", "Contemporary", "Fiction", "LGBT"]
+  }, {
+    "id": 18,
+    "image_url": "https://i.imgur.com/Tz5cmL3.png",
+    "title": "The Lands Beyond Raia",
+    "author": "Ndemi Otieno",
+    "tags": ["Classics", "Fiction", "Science Fiction", "Literature", "Politics"]
+  }, {
+    "id": 19,
+    "image_url": "https://i.imgur.com/hivSXZS.png",
+    "title": "Alchemy",
+    "author": "Patrick Keegan",
+    "tags": ["Classics", "Fiction", "Science Fiction", "Fantasy", "Literature"]
+  },
+  {
+    "id": 20,
+    "image_url": "https://i.imgur.com/EyRPHO8.png",
+    "title": "Isle of the Light",
+    "author": "Reese Miller",
+    "tags": ["Fantasy", "YA", "Supernatural", "Fiction", "Fantasy"] 
+  }
+]

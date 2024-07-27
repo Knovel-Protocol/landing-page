@@ -1,4 +1,5 @@
 import Button from '@/buttons/Button';
+import Link from 'next/link';
 import React, { ReactNode, useEffect, useState } from 'react'
 
 type Props = {
@@ -37,16 +38,13 @@ function HeroSection({children}: Props) {
           <p className="font-black text-center text-9xl md:text-8xl xs:text-7xl bg-gradient-to-r from-white to-white/50 inline-block text-transparent bg-clip-text">Read. Write. Earn.</p>
           <p className="text-2xl xs:text-lg md:text-xl max-w-prose text-center">Empowering authors with decentralized technology, Knovel revolutionizes the way you create, share, and earn from your stories.</p>
 
-          {/* <div className="relative overflow-hidden bg-transparent rounded-3xl text-white px-10 py-4">
-            <div className="absolute inset-0 w-full h-full  bg-gradient-to-r from-transparent via-white to-transparent opacity-50 animate-shine">
-
-            </div>
-            <p>GET  STARTED</p>
-
-          </div> */}
+          <Link href="/signin">
             <Button 
               title='GET STARTED'
+              buttonRadius='rounded-3xl'
             />
+          </Link>
+            
           
         </div>
     

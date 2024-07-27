@@ -41,7 +41,11 @@ const config: Config = {
       // => @media (max-width: 430px) { ... }
     },
     extend: {
+      overscrollBehavior: {
+        none: 'none',
+      },
       backgroundImage: {
+        'signin': "url('/signin-bg.png')",
         'hero-pattern': "url('/bg.png')",
         'features-bg': "url('/features-bg.png')",
         'tech-bg': "url('/tech.png')",

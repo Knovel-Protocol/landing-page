@@ -21,7 +21,7 @@ function Footer({}: Props) {
 
               <div className="flex flex-col">
                 <p className="text-white/40">Social</p>
-                <p>LinkedIn</p>
+                <a className="hover:cursor-pointer" href="https://www.linkedin.com/company/knovelprotocol/" target="_blank">LinkedIn</a>
               </div>
 
           </div>

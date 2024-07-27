@@ -1,5 +1,6 @@
 import Button from '@/buttons/Button'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {}
@@ -23,11 +24,12 @@ function Connect({}: Props) {
           <p className="font-extralight lg:text-sm md:text-xs">Join thousands of authors and readers on Knovel now to share your stories, discover new works, and earn rewards in a vibrant, decentralized ecosystem!</p>
         </div>
 
-        <div className="w-fit">
+        <Link href="/signin" className="w-fit">
           <Button 
             title="Join"
+            buttonRadius='rounded-3xl'
           />
-        </div>
+        </Link>
      
       </div>
 

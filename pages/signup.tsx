@@ -1,15 +1,16 @@
-import Button from '@/buttons/Button';
+import { createAccount } from '@/app/actions/login';
+import Signupform from '@/app/forms/Signupform';
 import SignInHeader from '@/headers/signin-header';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+
 
 type Props = {}
 const inter = Inter({ subsets: ["latin"] });
 
 
-function signup({}: Props) {
+function signupp({}: Props) {
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
 
@@ -36,37 +37,15 @@ function signup({}: Props) {
 
       <SignInHeader />
 
-      <div className="flex z-10 w-screen h-full space-x-10">
+      <div className="flex z-10 w-screen h-full space-x-10 halflg:space-x-4 sm:space-x-0">
 
-        <div className="flex flex-col w-1/2 h-full pl-32 items-center justify-center space-y-10">
-          <p className='text-5xl font-bold bg-gradient-to-r from-white to-white/50 inline-block text-transparent bg-clip-text'>Create Account</p>
-
-          <input type="text" placeholder='username' className="w-full py-4 px-4 rounded-xl focus:outline-none" required/>
-          <input type="email" placeholder='email' className="w-full py-4 px-4 rounded-xl focus:outline-none" required/>
-          <input type="password" placeholder="password" className="w-full focus:outline-none py-4 px-4 rounded-xl" required/>
-          <input type="password" placeholder="confirm password" className="w-full focus:outline-none py-4 px-4 rounded-xl" required/>
-
-          <Link href="/" className="w-full">
-            <Button 
-              title='Create Account'
-              buttonRadius='rounded-xl'
-            />
-          </Link>
-
-
-          <div className="w-full flex space-x-2 items-center justify-center text-white font-light">
-                <div className="w-1/6 border-t border-stone-200"></div>
-                <p>Or</p>
-                <div className="w-1/6 border-t border-stone-200"></div>
-          </div>
-
-          <Link href="/signin" className="text-stone-200">Already have an account?</Link>
-
+        <div className="flex w-1/2 sm:w-full sm:px-8">
+          <Signupform createAccount={createAccount}/>
 
         </div>
 
         {/* Girl sitting image */}
-        <div className="flex flex-col w-1/2 h-full justify-center">
+        <div className="flex flex-col w-1/2 h-full justify-center sm:hidden">
           <Image 
             className="w-fit h-fit"
             src={'/signup.png'}
@@ -74,6 +53,7 @@ function signup({}: Props) {
             width={"2160"}
             height={"2160"}
             quality={100}
+            priority
           />
         </div>
 
@@ -84,4 +64,4 @@ function signup({}: Props) {
   )
 }
 
-export default signup
+export default signupp

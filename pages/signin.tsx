@@ -1,3 +1,5 @@
+import { login } from '@/app/actions/login';
+import Signinform from '@/app/forms/Signinform';
 import Button from '@/buttons/Button';
 import SignInHeader from '@/headers/signin-header';
 import Apple from '@/logos/Apple';
@@ -40,57 +42,31 @@ function signin({}: Props) {
 
       <SignInHeader />
         
-      <div className="flex w-screen h-full space-x-10 z-10">
+      <div className="flex w-screen h-full space-x-10 sm:space-x-0 sm:px-8 halflg:space-x-4 z-10">
 
-        <div className="flex w-1/2 h-full justify-center items-center pl-32">
+        <div className="flex w-1/2 h-full justify-center items-center pl-32 halflg:pl-14 sm:hidden">
           <Image 
             className="w-fit h-fit"
-            src={'/books.png'}
+            src={'/signin.png'}
             alt="boy sitting at computer"
-            width={"2160"}
-            height={"2160"}
+            width={"1080"}
+            height={"1080"}
             quality={100}
+            priority
             
           />
         </div>
 
-        <div className="flex flex-col w-1/2 h-full justify-center pr-32">
+        <div className="flex flex-col w-1/2 sm:w-full h-full justify-center pr-32 sm:pr-0 halflg:pr-14">
 
-          <div className="flex flex-col space-y-8 w-full my-8">
-            <p className='text-5xl font-bold bg-gradient-to-r from-white to-white/50 inline-block text-transparent bg-clip-text'>Sign In to Knovel Protocol</p>
+          <div className="flex flex-col space-y-8 tall:space-y-2 w-full my-8 tall:my-4">
+            <p className='text-5xl halflg:text-4xl sm:text-5xl font-bold bg-gradient-to-r from-white to-white/50 inline-block text-transparent bg-clip-text tall:text-2xl'>Sign In to Knovel Protocol</p>
             <p className="text-white">If you don't have an account, you can <Link href="/signup" className="text-[#4461F2] font-bold">Register here!</Link> </p>
           </div>
 
           
-
-          <div className="w-full space-y-3">
-            <input type="email" placeholder='email' className="w-full py-4 px-4 rounded-xl focus:outline-none" required/>
-            <input type="password" placeholder="password" className="w-full focus:outline-none py-4 px-4 rounded-xl" required/>
-
-            <p className="text-white font-light text-sm text-right">Forgot password?</p>
-          </div>
-
-          <div className="w-full flex flex-col mt-10 space-y-8">
-
-            <Button 
-              title="Sign In"
-              buttonRadius="rounded-xl"
-            />
-
-      
-            <div className="flex space-x-2 items-center justify-center text-white font-light">
-              <div className="w-1/4 border-t border-stone-200"></div>
-              <p>Or continue with</p>
-              <div className="w-1/4 border-t border-stone-200"></div>
-            </div>
-
-            <div className="flex w-full space-x-4 p-1">
-              <Google className="w-1/3 size-14 border p-3 rounded-xl hover:cursor-pointer border-gray-500 hover:bg-white"/>
-              <Apple className="w-1/3 size-14 fill-white hover:fill-black border p-3 rounded-xl hover:cursor-pointer border-gray-500 hover:bg-white"/>
-              <Facebook className="w-1/3 size-14 border p-3 rounded-xl hover:cursor-pointer border-gray-500 hover:bg-white"/>
-            </div>
-          </div>
-
+          <Signinform login={login}/>
+        
         </div>
         
       </div>

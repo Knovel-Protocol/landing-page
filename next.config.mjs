@@ -1,9 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+
+    serverActions: true,
+    
+    },
   reactStrictMode: true,
   images: {
-    domains: ['i.imgur.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
+  
 };
 
 export default nextConfig;

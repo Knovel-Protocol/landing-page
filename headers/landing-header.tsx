@@ -1,5 +1,5 @@
 import SearchIcon from '@/icons/SearchIcon';
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
 
 type Props = {
   children?: ReactNode; 

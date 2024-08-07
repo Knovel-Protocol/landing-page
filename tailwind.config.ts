@@ -10,6 +10,7 @@ const config: Config = {
     "./props/**/*.{js,ts,jsx,tsx,mdx}",
     "./icons/**/*.{js,ts,jsx,tsx,mdx}",
     "./buttons/**/*.{js,ts,jsx,tsx,mdx}",
+    "./forms/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
@@ -39,6 +40,8 @@ const config: Config = {
 
       'xs': {'max': '430px'},
       // => @media (max-width: 430px) { ... }
+      'tall': { 'raw': '(max-height: 800px)' },
+      // => @media (min-height: 800px) { ... }
     },
     extend: {
       overscrollBehavior: {
@@ -106,6 +109,23 @@ const config: Config = {
             transitionProperty: 'opacity, transform',
           },
         },
+        shine2: {
+          '0%': { 
+            opacity: '0.5',
+            transform: 'translateX(-300px) skewX(-15deg)',
+            transitionProperty: 'opacity, transform',
+          },
+          '50%': { 
+            opacity: '0.6',
+            transform: 'translateX(400px) skewX(-15deg)',
+            transitionProperty: 'opacity, transform',
+          },
+          '100%': { 
+            opacity: '0.6',
+            transform: 'translateX(500px) skewX(-15deg)',
+            transitionProperty: 'opacity, transform',
+          },
+        }
       },
       animation: {
         scroll: 'scroll 15s linear infinite',
@@ -116,7 +136,8 @@ const config: Config = {
         reverseScroll2: 'reverseScroll2 15s linear infinite',
         reverseScroll3: 'reverseScroll3 15s linear infinite',
         xsreverseScroll: 'xsreverseScroll 15s linear infinite',
-        shine: 'shine 3s linear infinite'
+        shine: 'shine 3s linear infinite',
+        shine2: 'shine2 3s linear infinite'
       }
     },
   },

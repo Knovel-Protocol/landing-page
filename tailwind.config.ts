@@ -125,6 +125,16 @@ const config: Config = {
             transform: 'translateX(500px) skewX(-15deg)',
             transitionProperty: 'opacity, transform',
           },
+        },
+        pulsing: {
+          '50%': {
+            opacity: '0.5', 
+            transform: 'rotate(90deg) scale(1.5)'
+          },
+          '100%': {
+            opacity: '0', 
+            transform: 'rotate(180deg) scale(1.5)'
+          }
         }
       },
       animation: {
@@ -137,7 +147,8 @@ const config: Config = {
         reverseScroll3: 'reverseScroll3 15s linear infinite',
         xsreverseScroll: 'xsreverseScroll 15s linear infinite',
         shine: 'shine 3s linear infinite',
-        shine2: 'shine2 3s linear infinite'
+        shine2: 'shine2 3s linear infinite',
+        pulsing: 'pulsing 1s linear infinite'
       }
     },
   },

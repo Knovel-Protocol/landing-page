@@ -13,13 +13,13 @@ function ComingSoon({}: Props) {
 
       <div className="flex flex-col lg:space-y-4 w-full justify-between bg-[#141414] row-span-2 lg:col-span-2 py-10 sm:py-4 px-8 sm:px-4">
         <p className="text-[#a5a5a5] font-mono sm:text-xs">INTERCHAIN ACCOUNTS</p>
-        <div className="flex w-full items-center justify-center text-white lg:hidden">
+        <div className="flex w-fit h-fit items-center justify-center text-white lg:hidden">
           <Image 
-            className="w-[500px] h-[500px]"
-            src="/coin.png"
+            className="w-[700px] h-[700px]"
+            src="/interchain.png"
             alt=""
-            width={"600"}
-            height={"600"}
+            width={"700"}
+            height={"700"}
             quality={100}
           />
         </div>
@@ -60,7 +60,7 @@ function ComingSoon({}: Props) {
            
           <div className="flex w-1/2 self-center lg:hidden">
             <Image 
-              className="w-fit"
+              className="w-[300px] h-[300px]"
               src="/badge.png"
               alt=""
               width={"600"}

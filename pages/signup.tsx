@@ -10,7 +10,7 @@ type Props = {}
 const inter = Inter({ subsets: ["latin"] });
 
 
-function signupp({}: Props) {
+function signup({}: Props) {
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
 
@@ -64,4 +64,4 @@ function signupp({}: Props) {
   )
 }
 
-export default signupp
+export default signup

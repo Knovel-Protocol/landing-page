@@ -1,10 +1,6 @@
 import { login } from '@/app/actions/login';
 import Signinform from '@/app/forms/Signinform';
-import Button from '@/buttons/Button';
 import SignInHeader from '@/headers/signin-header';
-import Apple from '@/logos/Apple';
-import Facebook from '@/logos/Facebook';
-import Google from '@/logos/Google';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';

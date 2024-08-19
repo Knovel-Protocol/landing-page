@@ -28,7 +28,22 @@ export async function updateSession(request: NextRequest) {
   )
 
   // refreshing the auth token
-  await supabase.auth.getUser()
+  // await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const pathname = request.nextUrl.pathname;
+  if (!user && pathname === '/explore') {
+    const signInUrl = new URL('/signin', request.url);
+    return NextResponse.redirect(signInUrl);
+  }
+
+  // Redirect to /explore if the user is authenticated and tries to access /signin or /signup
+  if (user && (pathname === '/signin' || pathname === '/signup')) {
+    const exploreUrl = new URL('/explore', request.url);
+    return NextResponse.redirect(exploreUrl);
+  }
 
   return supabaseResponse
 }

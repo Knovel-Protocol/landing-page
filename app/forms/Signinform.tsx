@@ -1,11 +1,11 @@
+'use client'
+
 import Apple from '@/logos/Apple'
 import Facebook from '@/logos/Facebook'
 import Google from '@/logos/Google'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import Hidden from '@/icons/Hidden'
-
-type Props = {}
 interface SigninformProps {
   login: (formData: FormData) => Promise<{ error?: string }>
 }
@@ -20,7 +20,7 @@ function Signinform({login}: SigninformProps) {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+    const formData = new FormData(event.currentTarget);
 
     const result = await login(formData)
 
@@ -39,7 +39,13 @@ function Signinform({login}: SigninformProps) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="w-full space-y-3 tall:space-y-1">
-      <input type="email" placeholder='email' className="w-full py-4 px-4 rounded-xl focus:outline-none" required/>
+      <input 
+        type="email" 
+        name="email"
+        placeholder='email' 
+        className="w-full py-4 px-4 rounded-xl focus:outline-none" 
+        required
+      />
       {/* <input type="password" placeholder="password" className="w-full focus:outline-none py-4 px-4 rounded-xl" required/> */}
       <div className="relative w-full">
         <input 

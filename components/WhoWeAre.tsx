@@ -2,6 +2,7 @@ import KeyIcon from '@/icons/KeyIcon';
 import LockIcon from '@/icons/LockIcon';
 import VerifyIcon from '@/icons/VerifyIcon';
 import MoreInfoTab from '@/props/MoreInfoTab';
+import Image from 'next/image';
 import React, { ReactNode } from 'react'
 
 type Props = {
@@ -23,12 +24,7 @@ function WhoWeAre({children}: Props) {
             itemName="block text-white md:text-sm hidden group-hover:block lg:text-sm"
             label="Revolutionize"
             description='We harness the power of blockchain technology to redefine and enhance copyright management for authors and publishers, providing a more secure, transparent and efficient system.'
-            icon={
-              <VerifyIcon 
-                className="stroke-white size-40 md:size-28" 
-                fill="#aeacac"
-              />
-            }
+            icon={"/revolutionize.png"}
         />
         </div>
 
@@ -38,13 +34,8 @@ function WhoWeAre({children}: Props) {
               itemName="block text-white md:text-sm hidden group-hover:block lg:text-sm"
               label="Liberate"
               description='Bypass the limitations and censorship enforced by centralized entities and embrace the freedom to publish and monetize your work independently, unlocking new opportunities for creativity and financial success.'
-              icon={
-                <LockIcon 
-                  className="stroke-white size-40 md:size-28"
-                  fill="#aeacac"
-                />
-              }
-            />
+              icon={"/liberate.png"}
+              />
         </div>
       
         <div className="group flex w-1/4 sm:w-[300px] hover:bg-gradient-to-r from-[#6DDCFF] to-[#7F60F9] rounded-3xl p-0.5">
@@ -53,12 +44,8 @@ function WhoWeAre({children}: Props) {
               itemName="block text-white md:text-sm hidden group-hover:block lg:text-sm"
               label="Empower"
               description='Authors maintain control over their creations, from draft to publication, ensuring rights protection, managing distribution, safeguarding intellectual property, and maximizing earnings.'
-              icon={
-                <KeyIcon 
-                  className="stroke-white size-40 md:size-28"
-                  fill="#aeacac"
-                />
-              }
+              icon={"/empower.png"}
+
             />
         </div>
       

@@ -1,5 +1,5 @@
 import { type NextRequest } from 'next/server'
-import { updateSession } from '@/app/utils/supabase/middleware'
+import { updateSession } from '@/utils/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
   // update user's auth session
@@ -8,6 +8,9 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/explore',
+    '/signin',
+    '/signup',
     /*
      * Match all request paths except for the ones starting with:
      * - _next/static (static files)

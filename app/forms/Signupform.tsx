@@ -27,7 +27,7 @@ function Signupform({createAccount}: SignupformProps) {
     if (result?.error) {
       setError(result.error)
     } else {
-      router.push('/signin')
+      router.push('/explore')
     }
   }
 

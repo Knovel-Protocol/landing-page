@@ -1,4 +1,5 @@
 import SearchIcon from '@/icons/SearchIcon';
+import Link from 'next/link';
 import React, { ReactNode } from 'react';
 
 type Props = {
@@ -33,6 +34,10 @@ function LandingHeader({children}: Props): JSX.Element {
               </div>
           </div>
         </div>
+
+        <Link href="/explore" className="bg-gradient-to-r from-[#6DDCFF] to-[#7F60F9] rounded-full py-2 px-6 font-extrabold text-base">
+          <p>explore</p>
+        </Link>
         
      
     </div>

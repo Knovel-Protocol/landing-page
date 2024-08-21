@@ -10,3 +10,9 @@ export interface Book {
   rating: number;
   author_verified: boolean;
 }
+
+export interface Profile {
+  username: string; 
+  full_name: string;
+  avatar_url: string;
+}

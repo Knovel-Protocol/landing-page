@@ -11,6 +11,7 @@ export const config = {
     '/explore',
     '/signin',
     '/signup',
+    '/account',
     /*
      * Match all request paths except for the ones starting with:
      * - _next/static (static files)

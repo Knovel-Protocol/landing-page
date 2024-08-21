@@ -39,6 +39,11 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(signInUrl);
   }
 
+  if (!user && pathname === '/account') {
+    const signInUrl = new URL('/signin', request.url);
+    return NextResponse.redirect(signInUrl);
+  }
+
   // Redirect to /explore if the user is authenticated and tries to access /signin or /signup
   if (user && (pathname === '/signin' || pathname === '/signup')) {
     const exploreUrl = new URL('/explore', request.url);

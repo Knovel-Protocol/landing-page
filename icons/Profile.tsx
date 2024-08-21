@@ -2,11 +2,13 @@ import React from "react";
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 };
 
-function Profile({className}: Props) {
+function Profile({className, onClick}: Props) {
   return (
-    <svg
+    <div onClick={onClick}>
+        <svg
       width="40px"
       height="40px"
       strokeWidth="1.4"
@@ -34,6 +36,8 @@ function Profile({className}: Props) {
         strokeLinejoin="round"
       ></path>
     </svg>
+    </div>
+  
   );
 }
 

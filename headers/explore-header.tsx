@@ -1,7 +1,9 @@
 import Profile from '@/icons/Profile'
 import SearchIcon from '@/icons/SearchIcon'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router';
+import AccountDropdown from '@/app/dropdown/AccountDropdown';
+import Link from 'next/link';
 
 type Props = {}
 
@@ -9,6 +11,9 @@ function ExploreHeader({}: Props) {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
 
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,6 +24,24 @@ function ExploreHeader({}: Props) {
 
   };
 
+  const toggleDropdown = () => {
+    setDropdown((prev) => !prev);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setDropdown(false);
+    }
+  };
+
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="relative flex z-40 w-full backdrop-blur-md text-white items-center font-mono text-sm px-6 py-2 md:p-8 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
        {/* logo */}
@@ -28,7 +51,9 @@ function ExploreHeader({}: Props) {
           <p>knovel</p>
         </div>
         
-        <p className="halflg:hidden">write</p>
+        <Link href="/create">
+          <p className="halflg:hidden">write</p>
+        </Link>
         <p className="halflg:hidden">genres</p>
       </div>
 
@@ -55,8 +80,18 @@ function ExploreHeader({}: Props) {
       <div className="flex basis-1/4 items-center justify-around">
         <p>community</p>
         <p>library</p>
-        <Profile className='stroke-white'/>
+
+        <div ref={dropdownRef} className="relative hover:cursor-pointer">
+          <Profile onClick={toggleDropdown} className='stroke-white'/>
+            {dropdown && (
+              <div className="absolute right-0 mt-2 w-52 bg-white text-black rounded-lg shadow-xl z-50">
+                <AccountDropdown />
+              </div>
+              )}
+        </div>
       </div>
+
+    
 
      
     </div>

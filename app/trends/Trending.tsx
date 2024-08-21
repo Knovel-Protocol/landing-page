@@ -11,9 +11,6 @@ function Trending({}: Props) {
   const [currentPagination, setCurrentPagination] = useState(0);
   const booksPerPage = 5;
 
-
-  const supabase = createClient();
-
   const [currentPage, setCurrentPage] = useState(0);
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

@@ -1,4 +1,4 @@
-import Button from '@/buttons/Button';
+import FlowButton from '@/buttons/FlowButton';
 import Link from 'next/link';
 import React, { ReactNode, useEffect, useState } from 'react'
 
@@ -39,7 +39,7 @@ function HeroSection({children}: Props) {
           <p className="text-2xl xs:text-lg md:text-xl max-w-prose text-center">Empowering authors with decentralized technology, Knovel revolutionizes the way you create, share, and earn from your stories.</p>
 
           <Link href="/signin">
-            <Button 
+            <FlowButton 
               title='GET STARTED'
               buttonRadius='rounded-3xl'
             />

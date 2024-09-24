@@ -9,6 +9,7 @@ export interface Book {
   finished: boolean;
   rating: number;
   author_verified: boolean;
+  created_at: string;
 }
 
 export interface Profile {

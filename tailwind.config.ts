@@ -11,6 +11,10 @@ const config: Config = {
     "./icons/**/*.{js,ts,jsx,tsx,mdx}",
     "./buttons/**/*.{js,ts,jsx,tsx,mdx}",
     "./forms/**/*.{js,ts,jsx,tsx,mdx}",
+    "./drafts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./read/**/*.{js,ts,jsx,tsx,mdx}",
+    "./popup/**/*.{js,ts,jsx,tsx,mdx}",
+    "./dashboard/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {

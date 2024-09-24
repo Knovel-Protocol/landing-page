@@ -1,96 +1,110 @@
-import Aligncenter from '@/icons/Aligncenter';
-import Alignleft from '@/icons/Alignleft';
-import Alignright from '@/icons/Alignright';
-import Bold from '@/icons/Bold';
-import Italics from '@/icons/Italics';
-import Strikethrough from '@/icons/Strikethrough';
-import Underline from '@/icons/Underline';
+import { handleSubmitDraft } from '@/app/actions/draft';
+import TipTap from '@/components/TipTap';
+import ExploreHeader from '@/headers/explore-header';
 import { Inter } from 'next/font/google';
-import React, { useRef, useState } from 'react';
-import {marked} from 'marked';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
 
 
 type Props = {}
 const inter = Inter({ subsets: ["latin"] });
 
 function create({}: Props) {
-  const [text, setText] = useState<string>('');
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
 
-  const makeBold = () => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const selectedText = textarea.value.substring(start, end);
-  
-      if (selectedText) {
-        // Check if the selected text is already bold
-        const isBold = selectedText.startsWith('**') && selectedText.endsWith('**');
-        let newText;
-  
-        if (isBold) {
-          // Remove the bold formatting
-          newText = textarea.value.substring(0, start) +
-            selectedText.slice(2, -2) + // Remove the surrounding **
-            textarea.value.substring(end);
-        } else {
-          // Add bold formatting
-          newText = textarea.value.substring(0, start) +
-            `**${selectedText}**` +
-            textarea.value.substring(end);
-        }
-  
-        setText(newText);
-      }
+  const [content, setContent] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('content') || ''; // This will only run on the client side
     }
-  };
-  
+    return '';
+  });
+  const [titleContent, setTitleContent] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('titleContent') || '';
+    }
+    return '';
+  });
+  const [bookImage, setBookImage] = useState<File | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
 
-  const renderMarkdown = (text: string) => {
-    const rawMarkup = marked.parse(text); // Use the parse method here
-    return { __html: rawMarkup };
+
+  useEffect(() => {
+    const savedContent = localStorage.getItem('content') || '';
+    const savedTitleContent = localStorage.getItem('titleContent') || '';
+    setContent(savedContent);
+    setTitleContent(savedTitleContent);
+  }, []);
+
+  useEffect(() => {
+    // Save content and titleContent to localStorage whenever they change
+    localStorage.setItem('content', content);
+    localStorage.setItem('titleContent', titleContent);
+    setHasUnsavedChanges(!!content || !!titleContent);
+  }, [content, titleContent]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (hasUnsavedChanges) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasUnsavedChanges]);
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      if (hasUnsavedChanges && !confirm('You have unsaved changes. Are you sure you want to leave?')) {
+        router.events.emit('routeChangeError');
+        throw 'Abort route change. Please ignore this error.';
+      } else {
+        localStorage.removeItem('content');
+        localStorage.removeItem('titleContent');
+      }
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [hasUnsavedChanges, router]);
+
+  const handleContentChange = (value: string) => {
+    setContent(value);
   };
+
+  const handleTitleContentChange = (value: string) => {
+    setTitleContent(value);
+  };
+
+  const handleSave = async() => {
+    setHasUnsavedChanges(false); 
+    const draftId = await handleSubmitDraft(bookImage, titleContent, content, setError);
+    router.push(`/draft?q=${draftId}`); 
+
+     // Clear localStorage after saving the draft
+     localStorage.removeItem('content');
+     localStorage.removeItem('titleContent');
+  }
+
 
   return (
-    <main className={`flex w-screen h-screen items-center space-x-2 p-4 ${inter.className}`}>
-      <div className="flex flex-col w-full h-full basis-1/4 bg-[#171717] rounded-2xl text-white">
-
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <Bold 
-            className="hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500"
-            onClick={makeBold}
-          />
-          <Italics  className="hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-          <Underline className="hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-          <Strikethrough className="hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-        </div>
-
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <Alignleft className="hover:cursor-pointer w-1/3 px-4 py-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-          <Aligncenter className="hover:cursor-pointer w-1/3 px-4 py-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-          <Alignright className="hover:cursor-pointer w-1/3 px-4 py-2 size-14 bg-[#262626] rounded-md stroke-slate-500"/>
-        </div>
-        
-  
+    <main className={`flex flex-col w-screen h-screen items-center ${inter.className}`}>
+      <div  className="sticky top-0 w-full z-50">
+        <ExploreHeader />
       </div>
-
-      <div className="flex w-full h-full basis-3/4 bg-[#2a2929] rounded-2xl text-white">
-      <textarea 
-        className="w-full h-full bg-[#2a2929] rounded-2xl p-2 focus:outline-none"
-        ref={textareaRef}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+      <TipTap 
+        content={content} 
+        titleContent={titleContent}
+        onChange={handleContentChange} 
+        titleOnChange={handleTitleContentChange}
+        handleSubmit={handleSave}
+        imageFile={bookImage}
+        setImageFile={setBookImage}
       />
-
-      </div>
-
-
-      <div 
-        className="flex w-full h-full basis-3/4 bg-[#2a2929] rounded-2xl text-white p-4"
-        dangerouslySetInnerHTML={renderMarkdown(text)} 
-      />
-
     </main>
   )
 }

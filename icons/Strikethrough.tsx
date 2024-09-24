@@ -2,9 +2,10 @@ import React from "react";
 
 type Props = {
   className ?: string;
+  onClick ?: () => void;
 };
 
-function Strikethrough({className}: Props) {
+function Strikethrough({className, onClick}: Props) {
   return (
     <svg
       width="24px"
@@ -14,6 +15,7 @@ function Strikethrough({className}: Props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      onClick={onClick}
     >
       <path
         d="M3 12L21 12"

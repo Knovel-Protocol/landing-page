@@ -1,4 +1,4 @@
-import Button from '@/buttons/Button'
+import FlowButton from '@/buttons/FlowButton'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -25,7 +25,7 @@ function Connect({}: Props) {
         </div>
 
         <Link href="/signin" className="w-fit">
-          <Button 
+          <FlowButton 
             title="Join"
             buttonRadius='rounded-3xl'
           />

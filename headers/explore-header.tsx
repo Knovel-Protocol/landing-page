@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router';
 import AccountDropdown from '@/app/dropdown/AccountDropdown';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = {}
 
@@ -43,18 +44,26 @@ function ExploreHeader({}: Props) {
   }, []);
 
   return (
-    <div className="relative flex z-40 w-full backdrop-blur-md text-white items-center font-mono text-sm px-6 py-2 md:p-8 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
+    <div className="relative flex z-40 w-full backdrop-blur-md text-white items-center font-mono text-sm px-6 py-1 md:p-8 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
        {/* logo */}
-      <div className="flex basis-1/4 justify-evenly">
+      <div className="flex items-center basis-1/4">
 
-        <div className="absolute left-2 mr-4 flex self-center items-center">
-          <p>knovel</p>
-        </div>
+          <Image 
+            onClick={() => router.push(`/explore`)}
+            className="hover:cursor-pointer flex w-fit h-fit basis-1/3"
+            src="/knovel-logo-white.png"
+            alt="knovel community"
+            width={"120"}
+            height={"120"}
+            quality={100}
+            priority        
+          />
+
         
-        <Link href="/create">
-          <p className="halflg:hidden">write</p>
+        <Link className='flex basis-1/3' href="/dashboard">
+          <p className="halflg:hidden">dashboard</p>
         </Link>
-        <p className="halflg:hidden">genres</p>
+
       </div>
 
       

@@ -75,7 +75,7 @@ function search({}: Props) {
         {results.length > 0 ? (
           <div className="grid grid-cols-5 gap-4">
             {results.map((result) => (
-              <div key={result.id} className="w-fit h-fit">
+              <div onClick={() => router.push(`/book/${result.id}`)} key={result.id} className="w-fit h-fit">
                 <img 
                   className="z-10 p-0.5 bg-white w-[300px] h-[480px] lg:w-[200px] lg:h-[320px] md:w-[150px] md:h-[250px] sm:w-[120px] sm:h-[180px] xs:w-[100px] xs:h-[160px] group-hover:bg-gradient-to-r from-[#7F60F9] to-[#6DDCFF] rounded-xl object-cover" 
                   src={result.book_image}

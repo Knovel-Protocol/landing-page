@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { createClient } from '../../utils/supabase/client';
 import StarRating from '@/components/StarRating';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 type Props = {
   books: Book[]; // Add books as a prop of type Book[]
@@ -11,13 +12,21 @@ type Props = {
 }
 
 function TrendingBooks({books, currentPagination, booksPerPage}: Props) {
+  const router = useRouter();
  
-  
+  const handleBookClick = (bookId: string) => {
+    // Navigate to the book page using the book's ID
+    router.push(`/book/${bookId}`);
+  };
 
   return (
     <div className='flex flex-col w-full h-fit space-y-2'>
       {books.map((book, index) => (
-        <div key={book.id} className="flex space-x-8 md:space-x-4 sm:space-x-2 items-center hover:cursor-pointer hover:bg-gradient-to-r from-[#7F60F9] to-[#6DDCFF] rounded-full sm:rounded-xl px-8 xl:px-4 sm:px-2 py-4">
+        <div 
+          key={book.id} 
+          className="flex space-x-8 md:space-x-4 sm:space-x-2 items-center hover:cursor-pointer hover:bg-gradient-to-r from-[#7F60F9] to-[#6DDCFF] rounded-full sm:rounded-xl px-8 xl:px-4 sm:px-2 py-4"
+          onClick={() => handleBookClick(book.id)} 
+        >
           
           <div className="flex basis-1/4 xs:basis-full w-full space-x-2 items-center mr-8 sm:mr-2">
             <div className="text-xl font-bold ">
@@ -38,7 +47,7 @@ function TrendingBooks({books, currentPagination, booksPerPage}: Props) {
 
               <div className='flex space-x-1 items-center'>
                 <p className="text-sm halfxl:text-xs">{book.author_name}</p>
-                {book. author_verified && (
+                {book.author_verified && (
                   <Image 
                     className="w-[20px] h-[20px] halfxl:w-[15px] halfxl:h-[15px]"
                    src="/verified.png"

@@ -3,7 +3,7 @@ import { User } from '@supabase/supabase-js'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useProfile } from './fetch'
-import Button from '@/buttons/Button'
+import FlowButton from '@/buttons/FlowButton'
 
 type Props = {}
 
@@ -60,7 +60,7 @@ function AccountForm({user}: {user: User | null}) {
      
 
       <Link href="/signin">
-          <Button 
+          <FlowButton 
             title='Sign out'
             buttonRadius='rounded-3xl'
           />

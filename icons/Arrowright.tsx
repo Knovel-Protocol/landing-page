@@ -1,32 +1,29 @@
 import React from "react";
 
 type Props = {
-  className?: string;
-  onClick ?: () => void;
+  className ?: string;
 };
 
-function Italics({className, onClick}: Props) {
+function Arrowright({className}: Props) {
   return (
-      <svg
-      width="24px"
-      height="24px"
-      strokeWidth="2"
+    <svg
+      width="15px"
+      height="15px"
       viewBox="0 0 24 24"
+      stroke-width="2"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      stroke="currentColor"
       className={className}
-      onClick={onClick}
     >
       <path
-        d="M11 5L14 5M17 5L14 5M14 5L10 19M10 19L7 19M10 19L13 19"
+        d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       ></path>
     </svg>
-
-    
   );
 }
 
-export default Italics;
+export default Arrowright;

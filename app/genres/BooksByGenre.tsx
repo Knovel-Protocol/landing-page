@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchBooksByGenre } from './fetch';
 import StarRating from '@/components/StarRating';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 type Props = {
   genre: string;
@@ -11,6 +12,8 @@ type Props = {
 
 function BooksByGenre({genre, title}: Props) {
   const [books, setBooks] = useState<Book[]>([]);
+  const router = useRouter();
+
 
   useEffect(() => {
     const getBooks = async () => {
@@ -21,13 +24,22 @@ function BooksByGenre({genre, title}: Props) {
     getBooks();
   }, [genre]);
 
+  const handleBookClick = (bookId: string) => {
+    // Navigate to the book page using the book's ID
+    router.push(`/book/${bookId}`);
+  };
+
   return (
     <div className="flex flex-col text-white">
       <p className="text-4xl lg:text-3xl font-extrabold">{title}</p>
     
       <div className={`flex overflow-x-auto space-x-10 md:space-x-4 mt-8 lg:mt-4 custom-scrollbar`}>
         {books.map((book) => (
-          <div key={book.id} className="group flex-shrink-0 flex h-[400px] md:h-full items-center">
+          <div 
+            key={book.id} 
+            className="group flex-shrink-0 flex h-[400px] md:h-full items-center hover:cursor-pointer"
+            onClick={() => handleBookClick(book.id)} 
+          >
             
             <div className="flex bg-black h-full rounded-xl space-x-4 pr-2 items-center">
               <div className="w-fit h-fit">

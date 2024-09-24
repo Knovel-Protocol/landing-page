@@ -5,7 +5,7 @@ import WhoWeAre from "@/components/WhoWeAre";
 import Technology from "@/components/Technology";
 import ComingSoon from "@/components/ComingSoon";
 import Footer from "@/footers/Footer";
-import Button from "@/buttons/Button";
+import FlowButton from "@/buttons/FlowButton";
 import Connect from "@/components/Connect";
 import Link from "next/link";
 
@@ -52,7 +52,7 @@ export default function Home() {
         </div>
         
         <Link href="/signin">
-          <Button 
+          <FlowButton 
             title="Sign up"
             buttonRadius='rounded-3xl'
           />

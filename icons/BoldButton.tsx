@@ -5,7 +5,7 @@ type Props = {
   onClick ?: () => void;
 };
 
-function Bold({className, onClick}: Props) {
+function BoldButton({className, onClick}: Props) {
   return (
 
       <svg
@@ -28,4 +28,4 @@ function Bold({className, onClick}: Props) {
   );
 }
 
-export default Bold;
+export default BoldButton;

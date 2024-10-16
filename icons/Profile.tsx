@@ -8,7 +8,7 @@ type Props = {
 function Profile({className, onClick}: Props) {
   return (
     <div onClick={onClick}>
-        <svg
+    <svg
       width="40px"
       height="40px"
       strokeWidth="1.4"

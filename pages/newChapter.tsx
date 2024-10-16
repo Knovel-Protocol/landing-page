@@ -28,6 +28,8 @@ function newChapter({}: Props) {
   const [imageFile, setImageFile] = useState<string>('');
   const [bookUrl, setBookUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string>('');
+
 
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
 
@@ -95,7 +97,7 @@ function newChapter({}: Props) {
 
   useEffect(() => {
     if(q){
-      fetchPathToCover(draftId, setImageFile, setBookUrl);
+      fetchPathToCover(draftId, setImageFile, setBookUrl, setUserId);
     }
   }, [q])
 
@@ -113,6 +115,8 @@ function newChapter({}: Props) {
         handleSubmit={handleSave}
         imageFile={imageFile}
         bookUrl={bookUrl || ''}
+        userId={userId}
+        draftId={draftId}
       />
  
   </main>

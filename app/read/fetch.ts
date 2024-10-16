@@ -1,9 +1,9 @@
 import { createClient } from "@/utils/supabase/client";
 
-export const fetchBookInfo = async (bookId: string,  setChapters: React.Dispatch<React.SetStateAction<any[]>>) => {
+export const fetchBookInfo = async (bookId: string,  setChapters: React.Dispatch<React.SetStateAction<any[]>>, setLoading: Function) => {
   const supabase = createClient();
-
-  const{data, error} = await supabase
+  try{
+    const{data, error} = await supabase
     .from('books')
     .select('book_chapters')
     .eq('id', bookId)
@@ -16,4 +16,11 @@ export const fetchBookInfo = async (bookId: string,  setChapters: React.Dispatch
       console.log("number of chapters", data?.book_chapters);
       setChapters(data?.book_chapters || []);
     }
+
+  }catch(err){
+    console.error(err);
+  }finally{
+    setLoading(false);
+  }
+
 }

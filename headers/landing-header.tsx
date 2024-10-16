@@ -1,4 +1,6 @@
+import FlowButton from '@/buttons/FlowButton';
 import SearchIcon from '@/icons/SearchIcon';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 
@@ -8,14 +10,17 @@ type Props = {
 
 function LandingHeader({children}: Props): JSX.Element {
   return (
-    <div className="flex z-10 w-full backdrop-blur-md text-white items-center font-mono text-sm px-6 py-2 md:p-8 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
+    <div className="flex z-10 justify-between w-full backdrop-blur-md text-white items-center font-mono text-sm px-6 md:p-8 py-4 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
         {/* logo */}
-        <div className="flex sm:hidden">
-          <p>knovel</p>
+        <div className="flex w-[150px] h-fit">
+          <img 
+            src={"/knovel-logo-full.png"}
+            className="w-full h-full"
+          />
         </div>
        
-
-        {/* Search Functionality */}
+{/* 
+       
         <div className="flex justify-center items-center w-full">
           <div className="w-1/3 halfxl:w-3/4 sm:w-4/5">
               <div className="flex w-full bg-gradient-to-r from-[#6DDCFF] to-[#7F60F9] rounded-full p-0.5 cursor-not-allowed">
@@ -33,11 +38,16 @@ function LandingHeader({children}: Props): JSX.Element {
 
               </div>
           </div>
-        </div>
+        </div> */}
 
-        <Link href="/explore" className="bg-gradient-to-r from-[#6DDCFF] to-[#7F60F9] rounded-full py-2 px-6 font-extrabold text-base">
-          <p>explore</p>
+        <Link href="/signin">
+            <FlowButton 
+              title='Sign in'
+              buttonRadius='rounded-3xl'
+            />
+   
         </Link>
+
         
      
     </div>

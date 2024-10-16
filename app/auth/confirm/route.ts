@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/client'
 import { type EmailOtpType } from '@supabase/supabase-js'
 import { type NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache';
 
 
 
@@ -33,4 +34,23 @@ export async function GET(request: NextRequest) {
   // return the user to an error page with some instructions
   redirectTo.pathname = '/error'
   return NextResponse.redirect(redirectTo)
+}
+
+
+export async function POST(req: NextRequest) {
+  const supabase = createClient()
+
+  // Check if a user's logged in
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (user) {
+    await supabase.auth.signOut()
+  }
+
+  revalidatePath('/', 'layout')
+  return NextResponse.redirect(new URL('/login', req.url), {
+    status: 302,
+  })
 }

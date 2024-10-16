@@ -1,10 +1,18 @@
 import React from 'react'
 
 type Props = {
-  chapters: any[];
+  chapters: Chapter[];
 };
 
+type Chapter = {
+  title: string;
+  content: string;
+};
+
+const PAGE_WORD_LIMIT = 200; // Number of words per page (adjust as needed)
+
 function ReadList({chapters}: Props) {
+  
   return (
     <div className="h-full w-full flex flex-col py-10 px-4">
       {chapters.map((chapter, index) => (

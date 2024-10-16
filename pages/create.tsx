@@ -1,9 +1,10 @@
 import { handleSubmitDraft } from '@/app/actions/draft';
+import ConfirmDraft from '@/app/popup/ConfirmDraft';
 import TipTap from '@/components/TipTap';
 import ExploreHeader from '@/headers/explore-header';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 type Props = {}
@@ -26,7 +27,10 @@ function create({}: Props) {
   });
   const [bookImage, setBookImage] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [title, setTitle] = useState<string>('');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
+
 
 
   useEffect(() => {
@@ -81,13 +85,19 @@ function create({}: Props) {
   };
 
   const handleSave = async() => {
-    setHasUnsavedChanges(false); 
-    const draftId = await handleSubmitDraft(bookImage, titleContent, content, setError);
-    router.push(`/draft?q=${draftId}`); 
+    setShowConfirm(true);
+  }
 
-     // Clear localStorage after saving the draft
-     localStorage.removeItem('content');
-     localStorage.removeItem('titleContent');
+  const handleConfirm = async() => {
+    if(title.trim()){
+      setHasUnsavedChanges(false); 
+      const draftId = await handleSubmitDraft(bookImage, titleContent, content, setError, title);
+      router.push(`/draft?q=${draftId}`); 
+
+      // Clear localStorage after saving the draft
+      localStorage.removeItem('content');
+      localStorage.removeItem('titleContent');
+    }
   }
 
 
@@ -102,9 +112,16 @@ function create({}: Props) {
         onChange={handleContentChange} 
         titleOnChange={handleTitleContentChange}
         handleSubmit={handleSave}
-        imageFile={bookImage}
         setImageFile={setBookImage}
       />
+
+      {showConfirm && (
+        <ConfirmDraft
+          onConfirm={handleConfirm}
+          onCancel={() => setShowConfirm(false)}
+          setTitle={setTitle}
+        />
+      )}
     </main>
   )
 }

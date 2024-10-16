@@ -28,11 +28,13 @@ type Props = {
   onChange: (value: string) => void;
   titleOnChange: (value: string) => void;
   handleSubmit ?: () => void; 
-  imageFile ?: string;
-  bookUrl ?: string;
+  imageFile : string;
+  bookUrl : string;
+  userId : string;
+  draftId : string;
 }
 
-function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, imageFile, bookUrl}: Props) {
+function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, imageFile, bookUrl, userId, draftId}: Props) {
 
   const editor = useEditor({
     extensions: [
@@ -87,6 +89,9 @@ function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, 
         <ImageUploader2 
           imageFile={imageFile}
           bookUrl={bookUrl}
+          titleContent={titleContent}
+          userId={userId}
+          draftId={draftId}
         />
         
         <div className="flex w-full space-x-1 px-2 mt-2">

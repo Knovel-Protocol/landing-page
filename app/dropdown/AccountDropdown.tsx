@@ -13,7 +13,7 @@ function AccountDropdown({}: Props) {
    const [wallectConnect, setWalletConnect] = useState<boolean>(false);
   return (
     <div className="flex flex-col space-y-4 py-4 text-sm font-medium text-[#e3e4e5]">
-      <div  className="flex items-center space-x-2 px-3 hover:cursor-pointer hover:bg-black py-2">
+      <div className="flex items-center space-x-2 px-3 hover:cursor-pointer hover:bg-black py-2">
           <LinkIcon className="size-6"/>
           <p>Connect Wallet</p>
       </div>

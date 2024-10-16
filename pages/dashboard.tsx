@@ -1,3 +1,4 @@
+import DashboardInfo from '@/dashboard/DashboardInfo';
 import DashboardSider from '@/dashboard/DashboardSider';
 import { fetchProfileInfo } from '@/dashboard/fetch';
 import ExploreHeader from '@/headers/explore-header';
@@ -12,9 +13,13 @@ function dashboard({}: Props) {
   const [error, setError] = useState<string>(''); 
   const [profileUrl, setProfileUrl] = useState<string>(''); 
   const [imageFile, setImageFile] = useState<string>('');
+  const [publishedLength, setPublishedLength] = useState<number>(); 
+  const [userId, setUserId] = useState<any>(); 
+  const [bookmarkLength, setBookmarkLength] = useState<number>(); 
+  const [draftsLength, setDraftsLength] = useState<number>(); 
 
   useEffect(() => {
-    fetchProfileInfo(setError, setProfileUrl); 
+    fetchProfileInfo(setError, setProfileUrl, setDraftsLength, setPublishedLength, setUserId, setImageFile, setBookmarkLength); 
   }, [])
   return (
     <main className={`flex w-screen h-screen flex-col items-center ${inter.className}`}>
@@ -24,11 +29,16 @@ function dashboard({}: Props) {
       
       <div className={`flex w-full h-full items-center space-x-2 p-4`}>
         <div className="flex basis-1/4 bg-[#171717] rounded-xl w-full h-full">
-          <DashboardSider profileUrl={profileUrl}/>
+          <DashboardSider profileUrl={profileUrl} profilePath={imageFile} userId={userId}/>
         </div>
 
         <div className="flex basis-3/4 rounded-xl w-full h-full overflow-y-scroll">
-
+          <DashboardInfo 
+            published={publishedLength}
+            userId={userId}
+            reading={bookmarkLength}
+            drafts={draftsLength}
+          />
         </div>
       </div>
     </main>

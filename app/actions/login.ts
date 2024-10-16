@@ -43,9 +43,28 @@ export async function createAccount(formData: FormData) {
     return { error: error.message }
   }
 
+  console.log('are we signing up?')
+
   //await revalidatePath('/')
   //redirect('/signin')
   return { success: true }
 
+
+}
+
+export async function logout(router:any) {
+  const supabase = createClient();
+
+    // Check if a user's logged in
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    if (user) {
+      console.log('user is', user);
+      await supabase.auth.signOut()
+    }
+    router.push("/signin")
+  return { success: true }
 
 }

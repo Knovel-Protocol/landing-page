@@ -19,7 +19,7 @@ import Aligncenter from '@/icons/Aligncenter';
 import Alignright from '@/icons/Alignright';
 import BulletListButton from '@/icons/BulletListButton';
 import OrderedListButton from '@/icons/OrderedListButton';
-import { fetchBookImage } from '@/drafts/fetch';
+import { fetchDraftBookImage } from '@/drafts/fetch';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,9 +32,11 @@ type Props = {
   imageFile ?: string;
   bookUrl ?: string;
   setBookUrl:( value: string) => void;
+  userId : string;
+  draftId : string;
 }
 
-function TipTap3({content, titleContent, onChange, titleOnChange, handleSubmit, imageFile, bookUrl, setBookUrl}: Props) {
+function TipTap3({content, titleContent, onChange, titleOnChange, handleSubmit, imageFile, bookUrl, setBookUrl, userId, draftId}: Props) {
 
   const editor = useEditor({
     extensions: [
@@ -86,7 +88,7 @@ function TipTap3({content, titleContent, onChange, titleOnChange, handleSubmit, 
 
   useEffect(() => {
     if(imageFile){
-      fetchBookImage(imageFile, setBookUrl);
+      fetchDraftBookImage(imageFile, setBookUrl, userId)
     }
   }, [imageFile])
 
@@ -107,6 +109,9 @@ function TipTap3({content, titleContent, onChange, titleOnChange, handleSubmit, 
         <ImageUploader2 
           imageFile={imageFile}
           bookUrl={bookUrl}
+          titleContent={titleContent}
+          userId={userId}
+          draftId={draftId}
         />
         
         <div className="flex w-full space-x-1 px-2 mt-2">

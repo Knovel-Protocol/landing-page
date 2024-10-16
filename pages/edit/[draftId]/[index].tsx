@@ -29,6 +29,8 @@ function Edit({}: Props) {
   const [imageFile, setImageFile] = useState<string>('');
   const [bookUrl, setBookUrl] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string>('');
+
 
 
   const [unsavedChanges, setUnsavedChanges] = useState(false); // Track unsaved changes
@@ -38,7 +40,7 @@ function Edit({}: Props) {
     if (draftId && index && typeof draftId === 'string') {
       const draft_id = draftId.trim();
       const chapter_index = parseInt(index as string);
-      fetchChapterToEdit(draft_id, chapter_index, setContent, setTitleContent, setImageFile);
+      fetchChapterToEdit(draft_id, chapter_index, setContent, setTitleContent, setImageFile, setUserId);
     }
   }, [draftId, index]);
   
@@ -113,6 +115,8 @@ function Edit({}: Props) {
         imageFile={imageFile}
         bookUrl={bookUrl || ''}
         setBookUrl={setBookUrl}
+        draftId={typeof draftId == 'string' ? draftId.trim(): ''}
+        userId={userId}
       />
     </main>
   )

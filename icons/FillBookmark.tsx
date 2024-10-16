@@ -4,12 +4,12 @@ type Props = {
   className?: string;
 };
 
-function Bookmark({className}: Props) {
+function FillBookmark({ className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="none"
+      fill="currentColor"
       stroke="currentColor"
       strokeWidth="1.5"
       className={className}
@@ -23,4 +23,4 @@ function Bookmark({className}: Props) {
   );
 }
 
-export default Bookmark;
+export default FillBookmark;

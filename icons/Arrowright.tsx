@@ -10,7 +10,7 @@ function Arrowright({className}: Props) {
       width="15px"
       height="15px"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="4"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
@@ -18,7 +18,7 @@ function Arrowright({className}: Props) {
     >
       <path
         d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
-        strokeWidth="2"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       ></path>

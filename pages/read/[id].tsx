@@ -1,3 +1,4 @@
+import LoadingPage from '@/app/loading/LoadingPage';
 import ReadList from '@/app/read/ReadList';
 import { fetchBookInfo } from '@/app/read/fetch';
 import ExploreHeader from '@/headers/explore-header';
@@ -22,12 +23,21 @@ function Read({}) {
   useEffect(() => {
     if(id){
       const bookId = typeof id === 'string' ? id : '';
-      fetchBookInfo(bookId, setChapters); 
+      fetchBookInfo(bookId, setChapters, setLoading); 
     } 
   }, [id])
+  
+  if(loading) {
+    return (
+      <div className="bg-black w-screen h-screen">
+        <LoadingPage />
+      </div>
+    )
+  }
 
   return (
     <main className={`flex w-screen h-screen flex-col items-center`}>
+      
        <div  className="sticky top-0 w-full z-50">
         <ExploreHeader />
       </div>
@@ -36,7 +46,6 @@ function Read({}) {
 
         <div className='w-full h-full bg-[#171717] text-white rounded-xl p-2 overflow-y-scroll' >
           <ReadList chapters={chapters}/>
-          
         </div>
 
 

@@ -29,11 +29,10 @@ type Props = {
   onChange: (value: string) => void;
   titleOnChange: (value: string) => void;
   handleSubmit ?: () => void; 
-  imageFile ?: File | null; 
-  setImageFile ?: (file: File) => void;
+  setImageFile : (file: File) => void;
 }
 
-function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, imageFile, setImageFile}: Props) {
+function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, setImageFile}: Props) {
 
   const editor = useEditor({
     extensions: [
@@ -86,11 +85,9 @@ function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, i
   return (
     <main className={`flex w-screen h-full items-center space-x-2 p-4 ${inter.className}`}> 
         <div className="relative flex flex-col w-full h-full basis-1/4 bg-[#171717] rounded-2xl text-white">
-
-        
+    
           <ImageUploader 
             titleContent={titleContent}
-            imageFile={imageFile}
             setImageFile={setImageFile}
           />
           

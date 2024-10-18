@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@reown/appkit": "^1.1.5",
+    "@reown/appkit-adapter-ethers": "^1.1.5",
+    "@reown/appkit-adapter-wagmi": "^1.1.5",
+    "@reown/walletkit": "^1.1.1",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.44.4",
+    "@tanstack/react-query": "^5.59.15",
     "@tippyjs/react": "^4.2.6",
     "@tiptap/extension-character-count": "^2.6.6",
     "@tiptap/extension-image": "^2.6.6",
@@ -22,7 +27,10 @@
     "@tiptap/pm": "^2.6.6",
     "@tiptap/react": "^2.6.6",
     "@tiptap/starter-kit": "^2.6.6",
+    "@walletconnect/core": "^2.17.1",
+    "@walletconnect/utils": "^2.17.1",
     "clsx": "^2.1.1",
+    "ethers": "^6.13.4",
     "html-react-parser": "^5.1.18",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.439.0",
@@ -33,7 +41,9 @@
     "react-easy-crop": "^5.0.8",
     "react-icons": "^5.2.1",
     "remixicon": "^4.3.0",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.5.2",
+    "viem": "^2.21.27",
+    "wagmi": "^2.12.19"
   },
   "devDependencies": {
     "@types/node": "^20",

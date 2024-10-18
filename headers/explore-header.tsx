@@ -17,6 +17,7 @@ function ExploreHeader({}: Props) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string>(''); 
   const [profileUrl, setProfileUrl] = useState<string>(''); 
+  const [userId, setUserId] = useState<string>('');
 
 
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +40,7 @@ function ExploreHeader({}: Props) {
   };
 
   useEffect(() => {
-    retrieveProfilePhoto(setError, setProfileUrl)
+    retrieveProfilePhoto(setError, setProfileUrl, setUserId); 
   }, [])
 
 
@@ -112,8 +113,10 @@ function ExploreHeader({}: Props) {
             </div>
         
             {dropdown && (
-              <div className="absolute right-0 mt-6 w-52 bg-[#1d242e] rounded-lg shadow-xl z-50">
-                <AccountDropdown />
+              <div className="absolute min-w-64  right-0 mt-6 bg-[#1d242e] rounded-lg shadow-xl z-50">
+                <AccountDropdown 
+                  userId={userId}
+                />
               </div>
             )}
         </div>

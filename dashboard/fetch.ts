@@ -94,7 +94,7 @@ export async function fetchDraftInfo(userId: string, setError: Function, setDraf
   }
 }
 
-export async function retrieveProfilePhoto(setError: Function, setProfileUrl: Function){
+export async function retrieveProfilePhoto(setError: Function, setProfileUrl: Function, setUserId: Function){
   try{
     const authoruid = await getUser(setError);
     if (!authoruid) return;
@@ -109,6 +109,8 @@ export async function retrieveProfilePhoto(setError: Function, setProfileUrl: Fu
       if(imageFile){
         fetchProfileImage(imageFile, setProfileUrl); 
       }
+      
+      setUserId(authoruid);
 
     
 

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState } from 'react';
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import BulletList from '@tiptap/extension-bullet-list'
@@ -83,87 +83,93 @@ function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, s
 
 
   return (
-    <main className={`flex w-screen h-full items-center space-x-2 p-4 ${inter.className}`}> 
+    <main className={`flex md:flex-col w-screen h-full items-center space-x-2 p-4 ${inter.className}`}> 
         <div className="relative flex flex-col w-full h-full basis-1/4 bg-[#171717] rounded-2xl text-white">
     
           <ImageUploader 
             titleContent={titleContent}
             setImageFile={setImageFile}
           />
-          
-          <div className="flex w-full space-x-1 px-2 mt-2">
-            <p 
-              onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
-              className={`flex text-2xl items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 1 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-            >H1</p>
 
-            <p 
-              onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-              className={`flex text-2xl items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 2 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-            >H2</p>
+          <div className="flex flex-col md:flex-row md:w-full ss:hidden">
 
-            
-            <p 
-              onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-              className={`flex text-2xl items-center justify-center font-mono font-semibold ${editor?.isActive('heading', { level: 3 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-            >H3</p>
+              <div className="flex w-full space-x-1 px-2 md:px-1 mt-2 md:mt-0">
+                <p 
+                  onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
+                  className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 1 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+                >H1</p>
 
-          </div>
+                <p 
+                  onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+                  className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 2 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+                >H2</p>
 
-          <div className="flex w-full space-x-1 px-2 mt-2">
-            <BoldButton  
-              className={`${editor?.isActive('bold') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleBold().run()}
-            />
+                
+                <p 
+                  onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+                  className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-mono font-semibold ${editor?.isActive('heading', { level: 3 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+                >H3</p>
 
-            <ItalicsButton 
-              className={`${editor?.isActive('italic') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleItalic().run()}
-            />
+              </div>
 
-            <UnderlineButton 
-              className={`${editor?.isActive('underline') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleUnderline().run()}
-            />
+              <div className="flex w-full space-x-1 px-2 md:px-1 mt-2 md:mt-0 md:text-base sm:text-sm">
+                <BoldButton  
+                  className={`${editor?.isActive('bold') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleBold().run()}
+                />
 
-            <Strikethrough
-              className={`${editor?.isActive('strike') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleStrike().run()}
-            />
-          </div>
+                <ItalicsButton 
+                  className={`${editor?.isActive('italic') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleItalic().run()}
+                />
 
-          <div className="flex w-full space-x-1 px-2 mt-2">
-            <Alignleft 
-              className={`${editor?.isActive({ textAlign: 'left' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().setTextAlign('left').run()}
-            />
+                <UnderlineButton 
+                  className={`${editor?.isActive('underline') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleUnderline().run()}
+                />
 
-            <Aligncenter 
-              className={`${editor?.isActive({ textAlign: 'center' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().setTextAlign('center').run()}
-            />
+                <Strikethrough
+                  className={`${editor?.isActive('strike') ? 'hover:cursor-pointer w-1/4 md:size-10 sm:size-8 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleStrike().run()}
+                />
+              </div>
 
-            <Alignright
-              className={`${editor?.isActive({ textAlign: 'right' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().setTextAlign('right').run()}
-            />
+              <div className="flex w-full space-x-1 px-2 md:px-1 mt-2 md:mt-0 md:text-base sm:text-sm">
+                <Alignleft 
+                  className={`${editor?.isActive({ textAlign: 'left' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().setTextAlign('left').run()}
+                />
 
-          </div>
+                <Aligncenter 
+                  className={`${editor?.isActive({ textAlign: 'center' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().setTextAlign('center').run()}
+                />
+
+                <Alignright
+                  className={`${editor?.isActive({ textAlign: 'right' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().setTextAlign('right').run()}
+                />
+
+              </div>
 
     
-          <div className="flex w-full space-x-1 px-2 mt-2">
-            <BulletListButton 
-              className={`${editor?.isActive('bulletList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleBulletList().run()}
-            />
+              <div className="flex w-full space-x-1 px-2 md:px-1 mt-2 md:mt-0 md:text-base sm:text-sm ">
+                <BulletListButton 
+                  className={`${editor?.isActive('bulletList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleBulletList().run()}
+                />
 
-            <OrderedListButton 
-              className={`${editor?.isActive('orderedList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-              onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-            />
+                <OrderedListButton 
+                  className={`${editor?.isActive('orderedList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                  onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+                />
+              </div>
+
           </div>
+          
 
-          <div className="absolute bottom-0 w-full">
+
+          <div className="absolute bottom-0 w-full md:flex md:relative md:items-center md:justify-center">
 
             <div className="text-slate-400 text-sm p-4">
               <p> {editor?.storage.characterCount.characters()} characters </p>
@@ -171,7 +177,7 @@ function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, s
             </div>
       
 
-            <div onClick={handleSubmit} className="hover:cursor-pointer bg-indigo-600 p-4 mb-4 rounded-2xl mx-4 font-semibold text-xl text-center">
+            <div onClick={handleSubmit} className="hover:cursor-pointer bg-indigo-600 p-4 md:p-2 mb-4 md:mb-0 md:w-1/3 rounded-2xl mx-4 font-semibold text-xl md:text-lg text-center">
                 <p>Save</p>
             </div>
          
@@ -183,7 +189,40 @@ function TipTap({content, titleContent, onChange, titleOnChange, handleSubmit, s
           <div className="flex basis-1/12 rounded-2xl bg-[#2a2929]">
             <EditorContent editor={titleEditor} className="self-center w-full"/>
           </div>
+          
           <div className="flex basis-11/12 overflow-hidden w-full h-full rounded-2xl bg-[#2a2929]">
+            {editor && <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+                <div className="flex p-1 bg-white border border-gray-500 text-sm space-x-1 rounded-lg text-black">
+                  <button
+                    onClick={() => editor.chain().focus().toggleBold().run()}
+
+                    className={editor.isActive('bold') ? 'is-active bg-purple-700 text-white rounded-lg p-1' : 'rounded-lg p-1'}
+                  >
+                    Bold
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleItalic().run()}
+                    className={editor.isActive('italic') ? 'is-active bg-purple-700 text-white rounded-lg p-1' : 'rounded-lg p-1'}
+                  >
+                    Italic
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleStrike().run()}
+                    className={editor.isActive('strike') ? 'is-active bg-purple-700 text-white rounded-lg p-1' : 'rounded-lg p-1'}
+                  >
+                    Strike
+                  </button>
+
+                  <button
+                    onClick={() => editor.chain().focus().toggleUnderline().run()}
+                    className={editor.isActive('underline') ? 'is-active bg-purple-700 text-white rounded-lg p-1' : 'rounded-lg p-1'}
+                  >
+                    Underline
+                  </button>
+                </div>
+              </BubbleMenu>
+            }
+
             <EditorContent editor={editor} className="w-full"/>
           </div>
             

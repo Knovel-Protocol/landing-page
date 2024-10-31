@@ -85,11 +85,11 @@ function ImageUploader({titleContent, setImageFile}: Props) {
 
 
   return (
-       <div className="w-[250px] h-[375px] flex flex-col my-4 self-center">
+       <div className="w-[250px] md:h-fit h-[375px] flex flex-col my-4 self-center">
             <input ref={fileInputRef} accept="image/*" className="hidden" type="file" onChange={handleImageChange}/>
             <div 
               onClick={() => fileInputRef?.current?.click()} 
-              className="flex items-center justify-center w-full h-full self-center rounded-xl hover:cursor-pointer hover:border-2 hover:border-white"
+              className="flex items-center justify-center w-full h-full self-center rounded-xl lg:w-[200px] lg:h-[280px] sm:w-[150px] sm:h-[200px] hover:cursor-pointer hover:border-2 hover:border-white"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >

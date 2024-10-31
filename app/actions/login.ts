@@ -45,8 +45,6 @@ export async function createAccount(formData: FormData) {
     return { error: error.message }
   }
 
-  console.log('are we signing up?')
-
   //await revalidatePath('/')
   //redirect('/signin')
   return { success: true }

@@ -83,7 +83,7 @@ function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, 
 
 
   return (
-    <main className={`flex w-screen h-full items-center space-x-2 p-4 ${inter.className}`}> 
+    <main className={`flex w-screen md:flex-col h-full items-center space-x-2 p-4 ${inter.className}`}> 
       <div className="relative flex flex-col w-full h-full basis-1/4 bg-[#171717] rounded-2xl text-white">
 
         <ImageUploader2 
@@ -94,79 +94,81 @@ function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, 
           draftId={draftId}
         />
         
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <p 
-            onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={`flex text-2xl items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 1 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-          >H1</p>
+        <div className="flex flex-col md:flex-row md:w-full ss:hidden">
+            <div className="flex w-full space-x-1 px-2 mt-2 md:px-1 md:mt-0">
+              <p 
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
+                className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 1 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+              >H1</p>
 
-          <p 
-            onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-            className={`flex text-2xl items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 2 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-          >H2</p>
+              <p 
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+                className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-semibold font-mono ${editor?.isActive('heading', { level: 2 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+              >H2</p>
 
-          
-          <p 
-            onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-            className={`flex text-2xl items-center justify-center font-mono font-semibold ${editor?.isActive('heading', { level: 3 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md text-slate-500'}`}
-          >H3</p>
+              
+              <p 
+                onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+                className={`flex text-2xl md:text-base sm:text-sm items-center justify-center font-mono font-semibold ${editor?.isActive('heading', { level: 3 }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md text-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md text-slate-500'}`}
+              >H3</p>
 
+            </div>
+
+            <div className="flex w-full space-x-1 px-2 mt-2 md:px-1 md:mt-0 md:text-base sm:text-sm">
+              <BoldButton  
+                className={`${editor?.isActive('bold') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleBold().run()}
+              />
+
+              <ItalicsButton 
+                className={`${editor?.isActive('italic') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleItalic().run()}
+              />
+
+              <UnderlineButton 
+                className={`${editor?.isActive('underline') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleUnderline().run()}
+              />
+
+              <Strikethrough
+                className={`${editor?.isActive('strike') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleStrike().run()}
+              />
+            </div>
+
+            <div className="flex w-full space-x-1 px-2 mt-2 md:px-1 md:mt-0 md:text-base sm:text-sm">
+              <Alignleft 
+                className={`${editor?.isActive({ textAlign: 'left' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().setTextAlign('left').run()}
+              />
+
+              <Aligncenter 
+                className={`${editor?.isActive({ textAlign: 'center' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().setTextAlign('center').run()}
+              />
+
+              <Alignright
+                className={`${editor?.isActive({ textAlign: 'right' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().setTextAlign('right').run()}
+              />
+
+            </div>
+
+
+            <div className="flex w-full space-x-1 px-2 mt-2 md:px-1 md:mt-0 md:text-base sm:text-sm">
+              <BulletListButton 
+                className={`${editor?.isActive('bulletList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleBulletList().run()}
+              />
+
+              <OrderedListButton 
+                className={`${editor?.isActive('orderedList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 md:size-10 sm:size-8 bg-[#262626] rounded-md stroke-slate-500'}`}
+                onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+              />
+            </div>
         </div>
 
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <BoldButton  
-            className={`${editor?.isActive('bold') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleBold().run()}
-          />
-
-          <ItalicsButton 
-            className={`${editor?.isActive('italic') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleItalic().run()}
-          />
-
-          <UnderlineButton 
-            className={`${editor?.isActive('underline') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleUnderline().run()}
-          />
-
-          <Strikethrough
-            className={`${editor?.isActive('strike') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleStrike().run()}
-          />
-        </div>
-
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <Alignleft 
-            className={`${editor?.isActive({ textAlign: 'left' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().setTextAlign('left').run()}
-          />
-
-          <Aligncenter 
-            className={`${editor?.isActive({ textAlign: 'center' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().setTextAlign('center').run()}
-          />
-
-          <Alignright
-            className={`${editor?.isActive({ textAlign: 'right' }) ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().setTextAlign('right').run()}
-          />
-
-        </div>
-
-
-        <div className="flex w-full space-x-1 px-2 mt-2">
-          <BulletListButton 
-            className={`${editor?.isActive('bulletList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleBulletList().run()}
-          />
-
-          <OrderedListButton 
-            className={`${editor?.isActive('orderedList') ? 'hover:cursor-pointer w-1/4 p-2 size-14 bg-white rounded-md stroke-slate-500' : 'hover:cursor-pointer w-1/4 p-2 size-14 bg-[#262626] rounded-md stroke-slate-500'}`}
-            onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-          />
-        </div>
-
-        <div className="absolute bottom-0 w-full">
+        <div className="absolute bottom-0 w-full md:flex md:relative md:items-center md:justify-center">
 
           <div className="text-slate-400 text-sm p-4">
             <p> {editor?.storage.characterCount.characters()} characters </p>
@@ -174,7 +176,7 @@ function TipTap2({content, titleContent, onChange, titleOnChange, handleSubmit, 
           </div>
     
 
-          <div onClick={handleSubmit} className="hover:cursor-pointer bg-indigo-600 p-4 mb-4 rounded-2xl mx-4 font-semibold text-xl text-center">
+          <div onClick={handleSubmit} className="hover:cursor-pointer bg-indigo-600 p-4 mb-4 md:p-2 md:mb-0 md:w-1/3 md:text-lg rounded-2xl mx-4 font-semibold text-xl text-center">
               <p>Save</p>
           </div>
       

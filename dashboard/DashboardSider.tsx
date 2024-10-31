@@ -19,7 +19,7 @@ type Props = {
 function DashboardSider({profileUrl, profilePath, userId}: Props) {
   const router = useRouter(); 
   return (
-    <div className="relative flex flex-col h-fufll w-full px-14">
+    <div className="relative flex flex-col h-fufll w-full px-14 lg:px-8 sm:px-4">
 
       <ProfilePhoto 
         profilePath={profilePath}
@@ -27,34 +27,34 @@ function DashboardSider({profileUrl, profilePath, userId}: Props) {
         userId={userId}
         
       />
-      <Link href="/create" className="flex items-center justify-center text-lg font-bold w-full h-fit p-2 bg-indigo-600 rounded-2xl text-white">
+      <Link href="/create" className="flex items-center justify-center text-lg font-bold w-full h-fit p-2 sm:py-4 bg-indigo-600 rounded-2xl text-white">
         <p>+ Write</p>
       </Link>
 
 
-      <div className="flex flex-col my-8 h-full space-y-4">
+      <div className="flex flex-col md:flex-row my-8 h-full space-y-4 md:space-x-4 md:justify-center md:space-y-0 sm:py-2 ss:text-sm">
           <div onClick={() => router.push(`/dashboard`)} className="flex items-center space-x-2 text-[#a5a5a5] hover:cursor-pointer">
-            <HomeIcon />
+            <HomeIcon className="md:hidden"/>
             <p>Dashboard</p>
           </div>
 
           <div onClick={() => router.push(`/drafts/${userId}`)} className="flex items-center space-x-2 text-[#a5a5a5] hover:cursor-pointer">
-            <NewPage />
+            <NewPage className='md:hidden' />
             <p>Drafts</p>
           </div>
 
           <div className="flex items-center space-x-2 text-[#a5a5a5]">
-            <BookIcon /> 
+            <BookIcon className="md:hidden" /> 
             <p>Published</p>
           </div>
 
-          <div className="flex items-center space-x-2 text-[#a5a5a5]">
-            <QueueList className="size-6"/> 
+          <div onClick={() => router.push(`/readinglist/${userId}`)}  className="flex items-center space-x-2 text-[#a5a5a5]">
+            <QueueList className="size-6 md:hidden"/> 
             <p>Reading List</p>
           </div>
 
           <div className="flex items-center space-x-2 text-[#a5a5a5]">
-            <FollowingIcon />
+            <FollowingIcon className="md:hidden" />
             <p>Following</p>
           </div>
       </div>
@@ -64,14 +64,14 @@ function DashboardSider({profileUrl, profilePath, userId}: Props) {
     
       
 
-      <div className="bottom-8 absolute flex flex-col space-y-3 text-[#a5a5a5]">
+      <div className="bottom-8 absolute flex flex-col md:hidden space-y-3 text-[#a5a5a5]">
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 sm:text-xl">
           <SettingsIcon /> 
           <p>Settings</p>
         </div>
 
-        <div className="flex items-center space-x-2"> 
+        <div className="flex items-center space-x-2 sm:text-xl"> 
           <LogoutIcon />
           <p>Logout</p>
         </div>

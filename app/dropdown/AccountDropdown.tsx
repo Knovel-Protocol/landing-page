@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import { getAccount } from '@wagmi/core'
 import { config } from '@/config';
 import { useAccount } from 'wagmi';
+import HomeIcon from '@/icons/HomeIcon'
+import WorldIcon from '@/icons/WorldIcon'
 
 
 type Props = {
@@ -38,10 +40,20 @@ function AccountDropdown({userId}: Props) {
          <w3m-connect-button />
       </div>
       ) : (
-        <div className="flex items-center px-4 hover:cursor-pointer hover:bg-black py-2">
+        <div className="flex items-center self-center justify-center px-4 hover:cursor-pointer hover:bg-black py-2">
           <w3m-button />
         </div>
       )}
+
+      <Link className="flex items-center space-x-2 hover:cursor-pointer hover:bg-black px-3 py-3" href="/dashboard">
+        <HomeIcon />
+        <p>dashboard</p>
+      </Link>
+
+      <Link className="hidden halflg:flex items-center space-x-2 hover:cursor-pointer hover:bg-black px-3 py-3" href="/dashboard">
+        <WorldIcon />
+        <p>commnunity</p>
+      </Link>
       
       <Link className="flex items-center space-x-2 hover:cursor-pointer hover:bg-black px-3 py-3" href="/account">
         <SettingsIcon />

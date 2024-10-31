@@ -27,12 +27,12 @@ function dashboard({}: Props) {
         <ExploreHeader />
       </div>
       
-      <div className={`flex w-full h-full items-center space-x-2 p-4`}>
+      <div className={`flex md:flex-col w-full h-full items-center space-x-2 p-4`}>
         <div className="flex basis-1/4 bg-[#171717] rounded-xl w-full h-full">
           <DashboardSider profileUrl={profileUrl} profilePath={imageFile} userId={userId}/>
         </div>
 
-        <div className="flex basis-3/4 rounded-xl w-full h-full overflow-y-scroll">
+        <div className="flex basis-3/4 rounded-xl w-full h-full">
           <DashboardInfo 
             published={publishedLength}
             userId={userId}

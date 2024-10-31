@@ -46,18 +46,18 @@ function BookPage({book}: BookProps) {
         <ExploreHeader />
       </div>
 
-      <div className="w-full h-full flex px-28 py-10 overflow-hidden">
+      <div className="w-full h-full flex halflg:flex-col px-28 py-10 xxl:px-16 halfxl:px-10 overflow-hidden xxl:space-x-8 halflg:space-x-0 halflg:space-y-8">
 
-        <div className="basis-1/3 flex h-full w-full flex-col items-center space-y-3">
+        <div className="basis-1/3 flex h-full w-full flex-col items-center halflg:justify-center space-y-3">
             <div className="w-fit h-fit">
               <img 
-                className="z-10 p-0.5 bg-white w-[400px] h-[600px] lg:w-[200px] lg:h-[320px] md:w-[150px] md:h-[250px] sm:w-[120px] sm:h-[180px] xs:w-[100px] xs:h-[160px] group-hover:bg-gradient-to-r from-[#7F60F9] to-[#6DDCFF] rounded-xl object-cover" 
+                className="z-10 p-0.5 bg-white w-[400px] h-[600px] lg:w-[300px] lg:h-[450px] halflg:w-[450px] halflg:h-fit md:w-[300px] md:h-fit group-hover:bg-gradient-to-r from-[#7F60F9] to-[#6DDCFF] rounded-xl object-cover" 
                 src={book?.book_image} 
                 alt={book?.title}
               />
             </div>
 
-            <div className="flex w-2/3 items-center space-x-4">
+            <div className="flex w-2/3 halflg:w-1/3 items-center space-x-4">
               <Link className="basis-4/5" href={`/read/${[book?.id]}`}>
                 <FlowButton 
                   title='Read'
@@ -90,7 +90,7 @@ function BookPage({book}: BookProps) {
               <p className="text-xl font-medium">{book?.author_name}</p>
               <StarRating rating={book?.rating ?? 0}/> 
 
-              <p className="font-light w-3/4">{book?.book_synopsis}</p>
+              <p className="font-light w-3/4 halflg:w-full">{book?.book_synopsis}</p>
               
               <div className="flex space-x-2">
                 <p>Genres:</p>

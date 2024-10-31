@@ -42,6 +42,9 @@ const config: Config = {
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
 
+      'ss': {'max': '500px'},
+      // => @media (max-width: 500px) { ... }
+
       'xs': {'max': '430px'},
       // => @media (max-width: 430px) { ... }
       'tall': { 'raw': '(max-height: 800px)' },

@@ -95,7 +95,7 @@ function ProfilePhoto({profilePath, profileUrl, userId}: Props) {
       <input ref={fileInputRef} accept="image/*"  className="hidden" type="file" onChange={handleImageChange}/>
 
       <div 
-        className="w-[250px] h-[250px] rounded-full hover:cursor-pointer hover:border-2 hover:border-gray-600"
+        className="w-[250px] h-[250px] lg:w-[200px] lg:h-[200px] sm:w-[150px] sm:h-[150px] rounded-full hover:cursor-pointer hover:border-2 hover:border-gray-600"
         onClick={() => fileInputRef?.current?.click()} 
         ref={imageContainerRef} 
         onMouseEnter={handleMouseEnter}

@@ -20,7 +20,7 @@ if (!projectId) {
 const metadata = {
   name: 'Knovel',
   description: 'AppKit Example',
-  url: 'https://reown.com/appkit', // origin must match your domain & subdomain
+  url: 'https://beta.knovelprotocol.com/, https://knovelprotocol.com/', // origin must match your domain & subdomain
   icons: ['https://assets.reown.com/reown-profile-pic.png']
 }
 

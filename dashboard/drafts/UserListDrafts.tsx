@@ -21,23 +21,19 @@ function UserListDrafts({userId, setError}: Props) {
   }, [userId])
   
   return (
-    <div className="w-full h-full px-4">
+ 
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="h-fit w-full grid grid-cols-4 gap-4 p-4 xl:grid-cols-2 xl:gap-6 halflg:grid-cols-1 halflg:gap-10 md:grid-cols-2 ss:grid-cols-1 ss:items-center overflow-y-auto">
         {drafts.map((draft, index) => (
     
-          <div onClick={() => router.push(`/draft?q=${draft.draft_id}`)} key={index} className="flex flex-col hover:cursor-pointer">
-              <div className="text-4xl font-bold text-white">
-                {draft.title ? (
-                  <p>{draft.title}</p>
-                ) : (
-                  <p>No title</p>
-                )}
+          <div onClick={() => router.push(`/draft?q=${draft.draft_id}`)} key={index} className="flex-col h-full hover:cursor-pointer">
+              <div className="text-3xl font-bold w-full truncate whitespace-nowrap overflow-hidden text-white">
+                {draft.title || 'No title'}
               </div>
          
             <BookCover imageFile={draft.book_image} userId={userId}/>
 
-            <div className="flex space-x-1 text-sm font-extralight text-white mt-6">
+            <div className="flex space-x-1 text-sm font-extralight text-white mt-8">
               <p>written:</p>
               <p>{formatDate(`${draft.created_at}`)}</p>
             </div>
@@ -48,7 +44,7 @@ function UserListDrafts({userId, setError}: Props) {
 
       </div>
 
-    </div>
+   
   )
 }
 

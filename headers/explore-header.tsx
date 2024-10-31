@@ -54,7 +54,7 @@ function ExploreHeader({}: Props) {
   return (
     <div className="relative flex z-40 w-full backdrop-blur-md text-white items-center font-mono text-sm py-4 px-6 md:p-8 sm:py-4 sm:px-2 xs:px-1 xs:py-8">
        {/* logo */}
-      <div className="flex relative items-center basis-1/4">
+      <div className="flex relative items-center basis-1/4 flex-grow">
 
           <Image 
             onClick={() => router.push(`/explore`)}
@@ -70,7 +70,6 @@ function ExploreHeader({}: Props) {
 
       </div>
 
-      
 
       <form onSubmit={handleSearch} className="flex items-center basis-2/4 bg-gradient-to-r from-[#6DDCFF] to-[#7F60F9] rounded-3xl p-0.5">
         <div className="w-full flex bg-black rounded-3xl items-center p-1">
@@ -91,11 +90,11 @@ function ExploreHeader({}: Props) {
       </form>
 
       <div className="flex relative basis-1/4 items-center justify-around">
-        <div onClick={() => router.push("/dashboard")} className='flex absolute right-2/4 hover:cursor-pointer'>
+        <div onClick={() => router.push("/dashboard")} className='flex absolute right-2/4 xl:right-48 halfxl:hidden hover:cursor-pointer'>
           <p className="halflg:hidden">dashboard</p>
         </div>
 
-        <div onClick={() => router.push("/dashboard")} className='flex absolute right-1/4 hover:cursor-pointer'>
+        <div onClick={() => router.push("/dashboard")} className='flex absolute right-1/4 xl:right-20 halfxl:right-1/2  hover:cursor-pointer'>
           <p className="halflg:hidden">community</p>
         </div>
 
@@ -113,7 +112,7 @@ function ExploreHeader({}: Props) {
             </div>
         
             {dropdown && (
-              <div className="absolute min-w-64  right-0 mt-6 bg-[#1d242e] rounded-lg shadow-xl z-50">
+              <div className="absolute min-w-64 right-0 mt-6 bg-[#1d242e] rounded-lg shadow-xl z-50">
                 <AccountDropdown 
                   userId={userId}
                 />

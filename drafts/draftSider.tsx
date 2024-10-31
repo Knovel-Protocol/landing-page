@@ -82,11 +82,11 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
           />
 
 
-          <div onClick={() => setEditTitle(true)} className="text-white font-bold text-4xl text-center hover:cursor-pointer hover:text-gray-500">
+          <div onClick={() => setEditTitle(true)} className="text-white font-bold text-4xl lg:text-2xl text-center hover:cursor-pointer hover:text-gray-500">
             <p>{title}</p>
           </div>
 
-          <div className="flex-col w-full text-[#a5a5a5] text-sm items-center px-4 py-6">
+          <div className="flex-col w-full text-[#a5a5a5] text-sm items-center px-4 lg:px-2 py-6 lg:py-4 md:py-1">
               <p className="text-xs text-center mb-2">BOOK STATS</p>
 
               <div className="flex w-full space-x-10 text-sm items-center">
@@ -101,7 +101,7 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
 
               </div>
             
-            <div className="flex space-x-2 text-sm items-center">
+            <div className="flex md:hidden space-x-2 text-sm items-center">
               <CommentIcon className="stroke-[#a5a5a5]"/>
               <p>Comments</p>
             </div>
@@ -109,7 +109,7 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
           </div>
 
 
-          <div onClick={() => router.push(`/newChapter?q=${draftId}`)} className="flex text-[#a5a5a5] text-sm items-center space-x-2 px-4 hover:cursor-pointer">
+          <div onClick={() => router.push(`/newChapter?q=${draftId}`)} className="flex text-[#a5a5a5] text-sm items-center space-x-2 px-4 lg:px-2 hover:cursor-pointer">
             <NewPage className="stroke-[#a5a5a5]"/>
             <p>new chapter</p>
           </div>
@@ -118,12 +118,12 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
       </div>
 
    
-      <div onClick={() => setAddGenre(true)} className="flex text-gray-500 hover:text-gray-600 hover:cursor-pointer px-4 self-center mt-4">
+      <div onClick={() => setAddGenre(true)} className="flex text-gray-500 hover:text-gray-600 hover:cursor-pointer px-4 lg:px-2 self-center mt-4">
         <p>+ click to add genre</p>
       </div>
 
       
-      <div className="flex-grow overflow-y-auto px-4 py-2">
+      <div className="flex-grow overflow-y-auto md:h-[50px] px-4 lg:px-2 py-2">
         {genres?.map((genre, index) => (
           <div onClick={() => handleRemoveGenre(genre)} key={index} className="hover:cursor-pointer">
             {genre}
@@ -133,12 +133,12 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
 
      
 
-      <div className="flex-shrink-0 p-4 mb-2 w-full">
-        <div className="hover:cursor-pointer bg-indigo-600 text-center p-3 rounded-xl font-semibold text-lg text-white">
+      <div className="flex-shrink-0 md:flex md:p-1 md:justify-center md:items-center md:mt-2 p-4 lg:p-2 mb-2 w-full">
+        <div className="hover:cursor-pointer bg-indigo-600 text-center p-3 lg:p-2 md:w-1/2 rounded-xl font-semibold text-lg lg:text-base text-white">
           <p>publish</p>
         </div>
 
-        <div onClick={handleDelete} className="flex items-center w-full justify-center mt-4 space-x-2 text-red-600 hover:cursor-pointer hover:underline">
+        <div onClick={handleDelete} className="flex items-center w-full md:w-1/2 justify-center mt-4 md:mt-0 space-x-2 text-red-600 hover:cursor-pointer hover:underline">
           <TrashIcon />
           <p>delete</p>
         </div>

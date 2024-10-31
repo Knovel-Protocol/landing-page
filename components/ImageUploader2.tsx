@@ -81,12 +81,12 @@ function ImageUploader2({imageFile, bookUrl, titleContent, draftId, userId}: Pro
   };
 
   return (
-    <div className="flex flex-col self-center my-4 w-[250px] h-[375px]">
+    <div className="flex flex-col self-center my-4 w-[250px] h-[375px] lg:h-fit">
       <input ref={fileInputRef} accept="image/*"  className="hidden" type="file" onChange={handleImageChange}/>
 
         <div 
           onClick={() => fileInputRef?.current?.click()} 
-          className="flex items-center justify-center w-full h-full self-center rounded-xl hover:cursor-pointer hover:border-2 hover:border-white"
+          className="flex items-center justify-center w-full h-full lg:w-[200px] lg:h-[280px] sm:w-[150px] sm:h-[200px] self-center rounded-xl hover:cursor-pointer hover:border-2 hover:border-white"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

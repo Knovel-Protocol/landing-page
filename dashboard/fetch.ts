@@ -49,6 +49,29 @@ export async function fetchProfileInfo(setError: Function, setProfileUrl: Functi
   }
 }
 
+export async function fetchProfilePicture(setError: Function, setProfileUrl: Function, userId: string, setImageFile: Function) {
+  try{
+    const {data, error} = await supabase
+      .from('profiles')
+      .select('avatar_url')
+      .eq('id', userId)
+      .single();
+
+      const imageFile = data?.avatar_url; 
+      setImageFile(imageFile); 
+
+      if(imageFile){
+        fetchProfileImage(imageFile, setProfileUrl); 
+      }
+      
+      return true;
+
+  }catch(err){
+    console.error(err); 
+    return false;
+  }
+}
+
 export async function fetchProfileDrafts(userId:string, setProfileUrl: Function, setError: Function){
   try {
 
@@ -118,3 +141,53 @@ export async function retrieveProfilePhoto(setError: Function, setProfileUrl: Fu
     console.error("Error encountered", err); 
   }
 }
+
+export async function fetchBookReadingList (draftId: string) {
+  try{
+    if (!draftId) {
+      return null;
+    }
+    
+    const{data, error} = await supabase
+      .from('books')
+      .select('id, title, author_name, book_image, book_synopsis, book_genre, author_verified, rating')
+      .eq('id', draftId)
+      .single(); 
+
+      if (error || !data) {
+        console.log("Book not found or error occurred for draftId:", draftId);
+        return null; // Return null if no data is found
+      }
+      return data;
+  }catch(err){
+    console.error("Error encountered trying to fetch book info", err);
+    return null;
+  }
+}
+
+export async function fetchReadingList(userId: string, setBookmarks: Function) {
+  try{
+   const {data, error} = await supabase
+    .from('profiles')
+    .select('bookmark')
+    .eq('id', userId)
+    .single();
+
+    if (error || !data) {
+      throw error || new Error("No profile data found for the specified user.");
+    }
+
+
+    const bookmarks: string[] = data.bookmark || [];
+
+    const bookmarkPromises = bookmarks.map((bookmark) => fetchBookReadingList(bookmark));
+    const bookInfos = await Promise.all(bookmarkPromises);
+ 
+    setBookmarks(bookInfos);
+
+  }catch(err){
+    console.error("Error encountered trying to fetch reading list info", err);
+  }
+}
+
+

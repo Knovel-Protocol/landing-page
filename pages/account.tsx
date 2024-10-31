@@ -1,7 +1,8 @@
 import { Inter } from 'next/font/google';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AccountForm from '@/app/account/AccountForm';
 import { createClient } from '@/utils/supabase/client';
+import { User } from '@supabase/supabase-js'
 
 
 type Props = {}
@@ -9,18 +10,24 @@ type Props = {}
 const inter = Inter({ subsets: ["latin"] });
 
 
-async function account({}) {
+function account({}) {
   const supabase = createClient();
+  const [user, setUser] = useState<User|null>(null);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+
+  useEffect(() => {
+    async function fetchUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    }
+    fetchUser();
+  }, []);
 
 
 
   return (
     <main className={`flex w-screen min-h-screen flex-col items-center ${inter.className}`}>
-      <AccountForm user={user}/>
+      {user ?  <AccountForm user={user}/> : <p>Loading</p>}
     </main>
   )
 }

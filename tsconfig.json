@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "pages.disable/_app.tsx.disable"  ],
   "exclude": [
     "node_modules"
   ]

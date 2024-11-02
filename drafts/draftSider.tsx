@@ -2,13 +2,13 @@ import BookIcon from '@/icons/BookIcon'
 import CommentIcon from '@/icons/CommentIcon'
 import NewPage from '@/icons/NewPage'
 import TrashIcon from '@/icons/TrashIcon'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { deleteEntireDraft, editDraftTitle, fetchDraftBookImage, removeDraftGenre, updateDraftGenre } from './fetch'
 import ImageUploader2 from '@/components/ImageUploader2'
-import ConfirmDeleteDraft from '@/app/popup/ConfirmDeleteDraft'
-import NewGenre from '@/app/popup/NewGenre'
-import EditTitlePopup from '@/app/popup/EditTitlePopup'
+import ConfirmDeleteDraft from '@/components/popup/ConfirmDeleteDraft'
+import NewGenre from '@/components/popup/NewGenre'
+import EditTitlePopup from '@/components/popup/EditTitlePopup'
 
 type Props = {
  draftId : string;
@@ -109,7 +109,7 @@ function DraftSider({draftId, chapterCount, imageFile, title, userId, genres}: P
           </div>
 
 
-          <div onClick={() => router.push(`/newChapter?q=${draftId}`)} className="flex text-[#a5a5a5] text-sm items-center space-x-2 px-4 lg:px-2 hover:cursor-pointer">
+          <div onClick={() => router.push(`/newChapter/${draftId}`)} className="flex text-[#a5a5a5] text-sm items-center space-x-2 px-4 lg:px-2 hover:cursor-pointer">
             <NewPage className="stroke-[#a5a5a5]"/>
             <p>new chapter</p>
           </div>

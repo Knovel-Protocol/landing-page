@@ -1,4 +1,4 @@
-import { getUser } from '@/app/actions/draft';
+import { getUser } from '@/components/actions/draft';
 import { fetchDraftBookImage } from '@/drafts/fetch';
 import { createClient } from '@/utils/supabase/client';
 

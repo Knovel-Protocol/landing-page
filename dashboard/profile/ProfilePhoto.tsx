@@ -1,4 +1,4 @@
-import { Area, getCroppedImg } from '@/app/tools/cropImage';
+import { Area, getCroppedImg } from '@/components/tools/cropImage';
 import React, { useRef, useState } from 'react'
 import Cropper from 'react-easy-crop';
 import { uploadProfilePicture } from './fetch';

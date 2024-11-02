@@ -8,7 +8,8 @@ import NewPage from '@/icons/NewPage'
 import BookIcon from '@/icons/BookIcon'
 import QueueList from '@/icons/QueueList'
 import FollowingIcon from '@/icons/FollowingIcon'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'; 
+
 
 type Props = {
   profilePath ?: string;

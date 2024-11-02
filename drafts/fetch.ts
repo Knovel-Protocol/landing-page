@@ -1,4 +1,4 @@
-import { getUser } from '@/app/actions/draft';
+import { getUser } from '@/components/actions/draft';
 import { createClient } from '@/utils/supabase/client';
 
 const supabase = createClient();
@@ -149,6 +149,24 @@ export const deleteEntireDraft = async (draftId: string, userId: string, imageFi
   }catch(err){
     console.error("Unexpected error", err);
     return false;
+  }
+}
+
+export async function fetchBookData(id: string){
+  try{
+    const {data, error} = await supabase.from('books').select('*').eq('id', id).single(); 
+
+    if(error){
+      console.log("error fetching book");
+      return null;
+
+    }
+
+    return data;
+
+
+  }catch(err){
+    console.error("Unexpected error", err)
   }
 }
 

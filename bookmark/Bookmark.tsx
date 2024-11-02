@@ -1,7 +1,7 @@
 import StarRating from '@/components/StarRating';
 import { fetchReadingList } from '@/dashboard/fetch';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 type Props = {

@@ -1,11 +1,10 @@
 import Profile from '@/icons/Profile'
 import SearchIcon from '@/icons/SearchIcon'
 import React, { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/router';
-import AccountDropdown from '@/app/dropdown/AccountDropdown';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import { retrieveProfilePhoto } from '@/dashboard/fetch';
+import AccountDropdown from '@/components/dropdown/AccountDropdown';
 
 type Props = {}
 
